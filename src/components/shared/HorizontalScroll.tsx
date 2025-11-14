@@ -5,6 +5,7 @@ import Skills from "../blocks/Skills";
 import Welcome from "../blocks/Welcome";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { section } from "framer-motion/client";
+import { ReactLenis } from "lenis/react";
 
 const HorizontalScrollCarousel = () => {
     const targetRef = useRef<HTMLDivElement | null>(null);
@@ -40,7 +41,13 @@ const HorizontalScrollCarousel = () => {
     ];
 
     return (
-        <section>
+        <ReactLenis 
+          root
+          options={{
+            lerp: 0.05,
+            duration: 2,
+          }}
+        >
             <div ref={targetRef} className="font-manrope relative h-[400vh]">
                 <div className="sticky top-0 h-screen w-full overflow-hidden">
                     <motion.div style={{ x }} className="flex h-full w-[400vw]">
@@ -53,7 +60,7 @@ const HorizontalScrollCarousel = () => {
                     </motion.div>
                 </div>
             </div>
-        </section>
+        </ReactLenis>
     );
 };
 
